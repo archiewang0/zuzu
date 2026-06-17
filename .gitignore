@@ -1,6 +1,7 @@
 .env
 session/
 storage/seen_posts.json
+storage/message_ids.json
 __pycache__/
 *.pyc
 .venv/

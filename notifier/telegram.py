@@ -10,6 +10,7 @@ import telegram
 from telegram.constants import ParseMode
 from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 from scraper.parser import RentalPost
+from storage.message_ids import append_message_id
 
 logger = logging.getLogger(__name__)
 
@@ -80,21 +81,23 @@ async def _send_post(post: RentalPost) -> None:
     bot = _get_bot()
     message = _format_message(post)
 
-    await bot.send_message(
+    sent = await bot.send_message(
         chat_id=TELEGRAM_CHAT_ID,
         text=message,
         parse_mode=ParseMode.MARKDOWN_V2,
         disable_web_page_preview=False,
     )
+    append_message_id(sent.message_id)
 
     # 如果有圖片，發送第一張
     if post.images:
         try:
-            await bot.send_photo(
+            photo_msg = await bot.send_photo(
                 chat_id=TELEGRAM_CHAT_ID,
                 photo=post.images[0],
                 caption=f"📷 {post.author} 的貼文圖片",
             )
+            append_message_id(photo_msg.message_id)
         except Exception as e:
             logger.debug("圖片發送失敗：%s", e)
 

@@ -1,5 +1,6 @@
 """
 主程式：定時爬取 Facebook 租屋社團，並將新貼文發送至 Telegram。
+同時啟動 Telegram Bot 監聽刪除指令。
 
 啟動方式：python main.py
 第一次使用請先執行：python login.py
@@ -11,11 +12,13 @@ import os
 import sys
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
+from telegram.ext import Application, CommandHandler
 
-from config import FB_GROUP_URLS, INTERVAL_MINUTES, AUTH_STATE_PATH
+from config import FB_GROUP_URLS, INTERVAL_MINUTES, AUTH_STATE_PATH, TELEGRAM_BOT_TOKEN
 from scraper.facebook import scrape_all_groups
 from scraper.parser import parse_rental_info
 from notifier.telegram import send_posts
+from notifier.bot_commands import handle_deleteall, handle_deletelast, handle_help
 from storage.seen_posts import load_seen_ids, mark_seen
 
 logging.basicConfig(
@@ -60,11 +63,13 @@ async def main() -> None:
     if not _check_prerequisites():
         sys.exit(1)
 
-    logger.info("排程啟動，每 %d 分鐘執行一次", INTERVAL_MINUTES)
+    # 建立 Telegram Application（負責監聽指令）
+    app = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
+    app.add_handler(CommandHandler("deleteall", handle_deleteall))
+    app.add_handler(CommandHandler("deletelast", handle_deletelast))
+    app.add_handler(CommandHandler("help", handle_help))
 
-    # 啟動時立即執行一次
-    await run_scrape_job()
-
+    # 建立排程器
     scheduler = AsyncIOScheduler()
     scheduler.add_job(
         run_scrape_job,
@@ -73,14 +78,27 @@ async def main() -> None:
         max_instances=1,
         coalesce=True,
     )
-    scheduler.start()
 
-    try:
-        while True:
-            await asyncio.sleep(60)
-    except (KeyboardInterrupt, SystemExit):
-        logger.info("程式結束")
+    logger.info("排程啟動，每 %d 分鐘執行一次", INTERVAL_MINUTES)
+    logger.info("Bot 指令已啟用：/deleteall、/deletelast <n>、/help")
+
+    async with app:
+        await app.start()
+        await app.updater.start_polling(drop_pending_updates=True)
+
+        scheduler.start()
+        # 啟動時立即執行一次
+        await run_scrape_job()
+
+        try:
+            while True:
+                await asyncio.sleep(60)
+        except (KeyboardInterrupt, SystemExit):
+            logger.info("程式結束")
+
         scheduler.shutdown()
+        await app.updater.stop()
+        await app.stop()
 
 
 if __name__ == "__main__":
