@@ -1,0 +1,34 @@
+Message: '檢查新貼文: '
+Arguments: ([
+        RentalPost(
+            post_id='3406609422839477', 
+            url='https://www.facebook.com/groups/464870710346711/posts/3406609422839477/', 
+            author='未知', 
+            posted_at='', 
+            raw_text='地點\n忠孝復興站步行5分鐘\n正大安路上\n近SOGO、東區商圈\n\u200b…… 查看更多', 
+            images=[
+                'https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.30808-6/724569675_1015061861325423_8458180103437381415_n.jpg?stp=dst-jpg_tt6&cstp=mx1537x2048&ctp=p960x960&_nc_cat=109&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=a12qO4UcKtMQ7kNvwFkgvvG&_nc_oc=AdrMCpnuqdh9UJf73YCj0AXoP_PbjYztTIttyLtwke3QSRkbpgt0XFD0mWyU-7BwT5XTqaU6JoBx5uNPfY97tM7X&_nc_zt=23&_nc_ht=scontent.ftpe7-2.fna&_nc_gid=1g1A7en20HPIPrr0vrGRhQ&_nc_ss=7f289&oh=00_Af9WKVdqq0f35vOkGCZAkS3haCyr5W1ayFYaW9_YkmJybg&oe=6A38253E', 
+                'https://scontent.ftpe7-4.fna.fbcdn.net/v/t39.30808-6/724569638_1015061867992089_2782320082493725203_n.jpg?stp=dst-jpg_tt6&cstp=mx1537x2048&ctp=p960x960&_nc_cat=107&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=tV0u5j2Nl8IQ7kNvwHdTjzC&_nc_oc=AdopruNEdMfLjAhzx-z-WkQiLiSKYyZ0ZzOs8JyEAR8BkRHwIgW0sEEp9UfFHTRAtCoNAytOCIsVqWI6BKa8TZU9&_nc_zt=23&_nc_ht=scontent.ftpe7-4.fna&_nc_gid=1g1A7en20HPIPrr0vrGRhQ&_nc_ss=7f289&oh=00_Af8u76RHumHYrLdXfS2afwsY5t7yCq0rDoZmRPDh_wcM-g&oe=6A3809BB', 
+                'https://scontent.ftpe7-4.fna.fbcdn.net/v/t39.30808-6/725059423_1015061864658756_5212529410622931095_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1537&ctp=p960x960&_nc_cat=101&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=3zCwdzeU6E4Q7kNvwF6rqZn&_nc_oc=Adq66-CvbmgrJ88SGhM6BTjvHVpbDn3HrXvukVsbLGtG7Dmrw6Dr7qBb49bGT64rwFjoxnu1Oi0bB0Td9sYNBboL&_nc_zt=23&_nc_ht=scontent.ftpe7-4.fna&_nc_gid=1g1A7en20HPIPrr0vrGRhQ&_nc_ss=7f289&oh=00_Af8qvjvzaB8I4-fUaeT1KVMhCnHGDj9450IVtGPTVgXU9Q&oe=6A38115D', 
+                'https://scontent.ftpe7-3.fna.fbcdn.net/v/t39.30808-6/724486316_1015061971325412_4660565056987240986_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1537&ctp=p960x960&_nc_cat=108&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=rdwBAd9sRz4Q7kNvwHS_HHO&_nc_oc=Adp7xP5RlfzzpdjumYd9_AplnOGo2ZKfG9bfI_Zz_TH4SPSC3lGop3KgAVLSfiMSdn8LJQhZAMP2ZII9XOS5ClN6&_nc_zt=23&_nc_ht=scontent.ftpe7-3.fna&_nc_gid=1g1A7en20HPIPrr0vrGRhQ&_nc_ss=7f289&oh=00_Af_OKNeglwJvTDhrI8744wqZU8qlP4oODmdXM9tv776tqg&oe=6A381069', 
+                'https://scontent.ftpe7-3.fna.fbcdn.net/v/t39.30808-6/724486315_1015061974658745_7327235132944889323_n.jpg?stp=dst-jpg_tt6&cstp=mx1537x2048&ctp=p960x960&_nc_cat=102&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=5rs6lJiYpxoQ7kNvwGOKIiG&_nc_oc=AdrAmkKhMJU0lHl2iiO25N_zOmVplHRRNOonQEhXnMAIBkBrKQ--Y7pHgdbvcI6c6dRyXZPsaOBjosEBcLciOxdb&_nc_zt=23&_nc_ht=scontent.ftpe7-3.fna&_nc_gid=1g1A7en20HPIPrr0vrGRhQ&_nc_ss=7f289&oh=00_Af-BmlS2zoscv-8okTt61vb8DE-M0hCLRQ6EHXSkwDXlOg&oe=6A382244'
+                ],     
+            location=None, 
+            landmark=None, 
+            room_type=None, 
+            floor=None, 
+            price=None, 
+            deposit=None, 
+            includes=None, 
+            gas_type=None, 
+            utilities=None, 
+            electricity=None, 
+            water=None, 
+            facilities=None, 
+            pets=None, 
+            min_period=None, 
+            nearby=None, 
+            notes=None, 
+            size=None
+        )
+    ],)

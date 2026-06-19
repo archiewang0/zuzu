@@ -43,16 +43,17 @@ async def _scroll_and_collect(page: Page, seen_ids: set[str]) -> list[dict]:
     for _ in range(_MAX_SCROLLS):
         await page.wait_for_timeout(_SCROLL_PAUSE_MS)
 
-        # 抓取所有貼文容器
+        # !!!! 抓取所有貼文容器
+        # 這裡是抓取 FB 最原始的位置
         articles = await page.query_selector_all("div[data-pagelet^='GroupFeed'] div[role='article']")
         if not articles:
             # fallback selector
             articles = await page.query_selector_all("div[role='article']")
 
-        logger.info("[articles] 共 %d 篇", len(articles))
+        # logger.info("[articles] 共 %d 篇", len(articles))
         for i, article in enumerate(articles):
             preview = (await article.inner_text())[:80].replace("\n", " ")
-            logger.info("[article #%d] %s", i, preview)
+            # logger.info("[article #%d] %s", i, preview)
             try:
                 post_data = await _extract_article(page, article)
                 if post_data:
